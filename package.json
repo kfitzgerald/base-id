@@ -1,7 +1,7 @@
 {
   "name": "base-id",
   "version": "0.1.0",
-  "description": "Generate and parse base-58 and base-62 prefixed-identifiers, even Mongo ObjectId's!",
+  "description": "Encode, decode and generate base-58/62 identifiers. Convertable MongoDB ObjectId's. Add context with prefixes!",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha test"

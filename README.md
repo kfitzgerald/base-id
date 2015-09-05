@@ -2,7 +2,9 @@
 
 A basic base58 and base62 encoding and decoding system. Can optionally add a prefix to make the identifier more identifiable!
 
-Encodes hex-strings, byte arrays, numbers, big numbers, and mongo object ids to base58 or base62.
+Encodes hex-strings, byte arrays, numbers, big numbers, and MongoDB `ObjectId`s to base58 or base62.
+
+[![Build Status](https://travis-ci.org/kfitzgerald/base-id.svg)](https://travis-ci.org/kfitzgerald/base-id)
 
 # Installation 
 
