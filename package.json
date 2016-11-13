@@ -16,7 +16,7 @@
   "author": "Kevin Fitzgerald",
   "license": "MIT",
   "dependencies": {
-    "bignum": "^0.11.0"
+    "bignum": "^0.12.0"
   },
   "devDependencies": {
     "mocha": "^2.3.0",
