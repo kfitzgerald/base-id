@@ -1,11 +1,7 @@
+"use strict";
 
-var Base58 = require('./lib/base58'),
-    Base62 = require('./lib/base62'),
+const Base58 = require('./lib/base58');
+const Base62 = require('./lib/base62');
 
-    base58 = new Base58(),
-    base62 = new Base62();
-
-module.exports = exports = {
-    base58: base58,
-    base62: base62
-};
+exports.base58 = new Base58();
+exports.base62 = new Base62();

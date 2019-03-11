@@ -3,3 +3,7 @@ examples
 .idea
 *.tgz
 .travis.yml
+coverage
+.nyc_output
+docs
+package-lock.json

@@ -1,0 +1,21 @@
+{
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
+  "plugins": [
+  ],
+  "extends": "eslint:recommended",
+  "globals": {
+    "require": true,
+    "module": true,
+    "describe": true,
+    "it": true,
+    "before": true,
+    "after": true
+  }
+}
