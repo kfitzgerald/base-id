@@ -18,7 +18,7 @@ describe('Base', () => {
         const base = new Base();
 
         base.bytesToHex(bytes).should.be.exactly('000100ff');
-        const buffer = Buffer('000100ff', 'hex');
+        const buffer = Buffer.from('000100ff', 'hex');
 
         buffer.length.should.be.exactly(4);
         Array.from(buffer).should.deepEqual(bytes);
