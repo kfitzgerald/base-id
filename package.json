@@ -1,6 +1,6 @@
 {
   "name": "base-id",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Encode, decode, and generate base-58 and base-62 identifiers. Convertable MongoDB ObjectIds!",
   "main": "index.js",
   "scripts": {
