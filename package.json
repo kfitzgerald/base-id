@@ -1,6 +1,6 @@
 {
   "name": "base-id",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Encode, decode, and generate base-58 and base-62 identifiers. Convertable MongoDB ObjectIds!",
   "main": "index.js",
   "scripts": {
@@ -24,14 +24,14 @@
   "author": "Kevin Fitzgerald",
   "license": "MIT",
   "dependencies": {
-    "bignum": "^0.13.0"
+    "bignum": "^0.13.1"
   },
   "devDependencies": {
-    "mocha": "^6.0.2",
-    "mongodb": "^3.1.13",
+    "mocha": "^7.0.0",
+    "mongodb": "^3.5.2",
     "should": "^13.2.3",
-    "eslint": "^5.15.1",
-    "nyc": "^13.3.0"
+    "eslint": "^6.8.0",
+    "nyc": "^15.0.0"
   },
   "nyc": {
     "reporter": [
