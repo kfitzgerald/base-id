@@ -2,7 +2,7 @@
 
 A basic base58 and base62 encoding and decoding system. Can optionally add a prefix to make the identifier more identifiable!
 
-Encodes hex-strings, byte arrays, numbers, big numbers, and MongoDB `ObjectId`s to base58 or base62.
+Encodes hex-strings, byte arrays, numbers, big integers, and MongoDB `ObjectId`s to base58 or base62. No dependencies either!
 
 [![Build Status](https://travis-ci.org/kfitzgerald/base-id.svg)](https://travis-ci.org/kfitzgerald/base-id) [![Coverage Status](https://coveralls.io/repos/github/kfitzgerald/base-id/badge.svg?branch=master)](https://coveralls.io/github/kfitzgerald/base-id?branch=master)
 
@@ -18,31 +18,31 @@ npm install base-id
 
 ```js
 
-const base = require('base-id');
+const { base58, base62 } = require('base-id');
 
 // Generate a new crypto-random id with an arbitrary prefix
-base.base58.generateToken(24, 'account_'); // account_ifq8PeVV9J3weEtz5V14cr9H7AuKhndD
+base58.generateToken(24, 'account_'); // account_ifq8PeVV9J3weEtz5V14cr9H7AuKhndD
 
 // Generate a new crypto-random id with an arbitrary prefix
-base.base62.generateToken(24, 'product_'); // product_8egyAcmiJhK0pFThcYHYIojG9GIKK7A4
+base62.generateToken(24, 'product_'); // product_8egyAcmiJhK0pFThcYHYIojG9GIKK7A4
 
 
 
 // Encode a hex-string to base58
 const hex = "0a372a50deadbeef";
-let res = base.base58.encode(hex); // 2i6ye84HA6z;
+let res = base58.encode(hex); // 2i6ye84HA6z;
 
 // Encode a hex-string to base62
-res = base.base62.encode(hex); // SnmsvJ1ziv;
+res = base62.encode(hex); // SnmsvJ1ziv;
 
 
 
 // Make a MongoDB ObjectId pretty:
 const objId = new ObjectId();
-res = base.base58.encodeWithPrefix(objId, 'charge_'); // charge_2d2yysrPLNBLYpWfK
+res = base58.encodeWithPrefix(objId, 'charge_'); // charge_2d2yysrPLNBLYpWfK
 
 // Change a pretty id back into an ObjectId
-new ObjectId(base.base58.decodeWithPrefix('charge_2d2yysrPLNBLYpWfK', 'charge_')); // new ObjectId("55ea16f30c169b651ddf40ea")
+new ObjectId(base58.decodeWithPrefix('charge_2d2yysrPLNBLYpWfK', 'charge_')); // new ObjectId("55ea16f30c169b651ddf40ea")
 
 ```
 
@@ -62,10 +62,13 @@ The module exports both base58 and base62 instances with the following members.
  * `bytesToHex(bytes)` – Convert a byte array to a hex string
  * `decodeHexToNumeric(hex)` – Decodes a hex string to a BigInt number
  * `encodeNumericToHex(dec)` – Encode a number to hex string
- * `getHexFromObject(mixed)` Gets the hex string from the given thing. Accepts a hex string, number, bignum, byte array, or MongoDB `ObjectId` instance.
+ * `getHexFromObject(mixed)` Gets the hex string from the given thing. Accepts a hex string, number, BigInt, byte array, or MongoDB `ObjectId` instance.
  
  
 ## Breaking Changes
+
+### v3.0.0
+ * Removed BigNum dependency (uses JS2020's built-in BigInt)
 
 ### v2.0.0
  * Removed `binaryToHex`

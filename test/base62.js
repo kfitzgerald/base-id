@@ -2,9 +2,7 @@
 
 const Base = require('../index');
 const should = require('should');
-const BigNum = require('bignum');
 const ObjectId = require('mongodb').ObjectId;
-
 
 describe('Base62', () => {
 
@@ -43,21 +41,21 @@ describe('Base62', () => {
     });
 
     it('should decode number', () => {
-        Base.base62.decodeHexToNumeric(Base.base62.decode('0')).toNumber().should.equal(0);
-        Base.base62.decodeHexToNumeric(Base.base62.decode('1')).toNumber().should.equal(1);
-        Base.base62.decodeHexToNumeric(Base.base62.decode('Z')).toNumber().should.equal(61);
-        Base.base62.decodeHexToNumeric(Base.base62.decode('10')).toNumber().should.equal(62);
-        Base.base62.decodeHexToNumeric(Base.base62.decode('2lkCB1')).toNumber().should.equal(2147483647);
-        Base.base62.decodeHexToNumeric(Base.base62.decode(Base.base62.encode('73696d706c792061206c6f6e6720737472696e67'))).toString().should.equal((new BigNum('73696d706c792061206c6f6e6720737472696e67', 16)).toString());
+        Base.base62.decodeHexToNumeric(Base.base62.decode('0')).should.equal(0n);
+        Base.base62.decodeHexToNumeric(Base.base62.decode('1')).should.equal(1n);
+        Base.base62.decodeHexToNumeric(Base.base62.decode('Z')).should.equal(61n);
+        Base.base62.decodeHexToNumeric(Base.base62.decode('10')).should.equal(62n);
+        Base.base62.decodeHexToNumeric(Base.base62.decode('2lkCB1')).should.equal(BigInt(2147483647));
+        Base.base62.decodeHexToNumeric(Base.base62.decode(Base.base62.encode('73696d706c792061206c6f6e6720737472696e67'))).toString().should.equal((BigInt('0x73696d706c792061206c6f6e6720737472696e67')).toString());
     });
 
     it('should encode big numbers', () => {
-        const x = new BigNum("340282366920938463463374607431768211455");
+        const x = BigInt("340282366920938463463374607431768211455");
         should(Base.base62.encode(x)).equal('7N42dgm5tFLK9N8MT7fHC7');
     });
 
     it('should encode big numbers', () => {
-        const x = new BigNum("0");
+        const x = BigInt("0");
         should(Base.base62.encode(x)).equal('0');
     });
 

@@ -25,5 +25,15 @@ describe('Base', () => {
 
     });
 
+    it('should pad hex numbers appropriately', () => {
+
+        const base = new Base();
+        let res = base.getHexFromObject(0);
+        res.should.be.exactly('00');
+
+        res = base.getHexFromObject(128);
+        res.should.be.exactly('80');
+    });
+
 });
 
