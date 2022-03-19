@@ -1,8 +1,0 @@
-language: node_js
-node_js:
-  - lts/*
-  - '14'
-  - '12'
-  - '10'
-after_script:
-- npm install coveralls@2.10.0 && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
