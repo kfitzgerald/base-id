@@ -4,7 +4,7 @@ A basic base58 and base62 encoding and decoding system. Can optionally add a pre
 
 Encodes hex-strings, byte arrays, numbers, big integers, and MongoDB `ObjectId`s to base58 or base62. No dependencies either!
 
-[![Build Status](https://travis-ci.org/kfitzgerald/base-id.svg)](https://travis-ci.org/kfitzgerald/base-id) [![Coverage Status](https://coveralls.io/repos/github/kfitzgerald/base-id/badge.svg?branch=master)](https://coveralls.io/github/kfitzgerald/base-id?branch=master)
+[![Node.js CI](https://github.com/kfitzgerald/base-id/actions/workflows/node.js.yml/badge.svg)](https://github.com/kfitzgerald/base-id/actions/workflows/node.js.yml) [![Coverage Status](https://coveralls.io/repos/github/kfitzgerald/base-id/badge.svg?branch=master)](https://coveralls.io/github/kfitzgerald/base-id?branch=master)
 
 # Installation 
 
