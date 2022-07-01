@@ -1,6 +1,6 @@
 {
   "name": "base-id",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "Encode, decode, and generate base-58 and base-62 identifiers. Convertible MongoDB ObjectIds!",
   "main": "index.js",
   "scripts": {
@@ -25,10 +25,10 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "mocha": "^9.2.2",
-    "mongodb": "^4.3.1",
+    "mocha": "^10.0.0",
+    "mongodb": "^4.7.0",
     "should": "^13.2.3",
-    "eslint": "^8.11.0",
+    "eslint": "^8.18.0",
     "nyc": "^15.1.0"
   },
   "mocha": {

@@ -3,7 +3,7 @@
 const Base = require('../index');
 const should = require('should');
 const ObjectId = require('mongodb').ObjectId;
-
+const Crypto = require('crypto');
 
 describe('Base58', () => {
 
@@ -71,6 +71,25 @@ describe('Base58', () => {
     it('should encode byte array', () => {
         const x = [10, 55, 42, 80, 0xDE, 0xAD, 0xBE, 0xEF];
         should(Base.base58.encode(x)).equal('2i6ye84HA6z');
+    });
+
+    it('should encode/decode a uuid', async () => {
+        // Here is a UUID
+        const uuid = 'c939d4cd-3923-44ed-a2d5-450776bdfce9';
+
+        // Encoding the UUID should return work
+        should(Base.base58.encode(uuid)).be.exactly('RrCTKkrZMkVgnwzZ3QP7Lc');
+
+        // Decoding the value should return the uppercase hex value
+        should(Base.base58.decode('RrCTKkrZMkVgnwzZ3QP7Lc')).be.exactly('C939D4CD392344EDA2D5450776BDFCE9');
+
+        // Formatting the hex value as a UUID should match the original string
+        should(Base.base58.getUUIDFromHex('C939D4CD392344EDA2D5450776BDFCE9')).be.exactly(uuid);
+        should(Base.base58.getUUIDFromHex('C939D4CD392344EDA2D5450776BDFCE9', false)).be.exactly(uuid.toUpperCase());
+
+        // Should handle a random value
+        const random = Crypto.randomUUID();
+        should(Base.base58.getUUIDFromHex(Base.base58.decode(Base.base58.encode(random))));
     });
 
     it('can encode and decode ObjectId', () => {

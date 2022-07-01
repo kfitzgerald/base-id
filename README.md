@@ -63,6 +63,7 @@ The module exports both base58 and base62 instances with the following members.
  * `decodeHexToNumeric(hex)` – Decodes a hex string to a BigInt number
  * `encodeNumericToHex(dec)` – Encode a number to hex string
  * `getHexFromObject(mixed)` Gets the hex string from the given thing. Accepts a hex string, number, BigInt, byte array, or MongoDB `ObjectId` instance.
+ * `getUUIDFromHex(hex, lowercase=true)` Gets the formatted UUID string from the given hex string. Defaults to lowercase.
  
  
 ## Breaking Changes
