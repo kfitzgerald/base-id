@@ -153,5 +153,12 @@ describe('Base62', () => {
         res.should.be.instanceOf(Uint8Array);
     });
 
+    it('leading zeros are not preserved in base62', async () => {
+        should(Base.base62.decode(Base.base62.encode('00'))).be.exactly('00');
+        should(Base.base62.decode(Base.base62.encode('0039d4cd-3923-44ed-a2d5-450776bdfce9'))).be.exactly('39D4CD392344EDA2D5450776BDFCE9');
+        should(Base.base62.decode(Base.base62.encode('0039D4CD392344EDA2D5450776BDFCE9'))).be.exactly('39D4CD392344EDA2D5450776BDFCE9');
+        should(Base.base62.decode(Base.base62.encode('00000000000000000000000000000000'))).be.exactly('00');
+    });
+
 
 });

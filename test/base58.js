@@ -156,4 +156,11 @@ describe('Base58', () => {
         res.should.be.instanceOf(Uint8Array);
     });
 
+    it('should encode/decode a uuid with two leading zeroes', async () => {
+        should(Base.base58.decode(Base.base58.encode('0039d4cd-3923-44ed-a2d5-450776bdfce9'))).be.exactly('0039D4CD392344EDA2D5450776BDFCE9');
+        should(Base.base58.decode(Base.base58.encode('0039D4CD392344EDA2D5450776BDFCE9'))).be.exactly('0039D4CD392344EDA2D5450776BDFCE9');
+        should(Base.base58.decode(Base.base58.encode('00000000000000000000000000000000'))).be.exactly('00000000000000000000000000000000');
+        should(Base.base58.decode(Base.base58.encode('00000000000000000000000000000000'))).be.exactly('00000000000000000000000000000000');
+    });
+
 });

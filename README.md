@@ -18,13 +18,14 @@ npm install base-id
 
 ```js
 
-const { base58, base62 } = require('base-id');
+const { base58, base62, base62p } = require('base-id');
 
 // Generate a new crypto-random id with an arbitrary prefix
 base58.generateToken(24, 'account_'); // account_ifq8PeVV9J3weEtz5V14cr9H7AuKhndD
 
 // Generate a new crypto-random id with an arbitrary prefix
 base62.generateToken(24, 'product_'); // product_8egyAcmiJhK0pFThcYHYIojG9GIKK7A4
+base62p.generateToken(24, 'product_'); // product_mKO7RdTgKjHQtkrRMhm6uQAWmJ0hCRaG
 
 
 
@@ -34,6 +35,7 @@ let res = base58.encode(hex); // 2i6ye84HA6z;
 
 // Encode a hex-string to base62
 res = base62.encode(hex); // SnmsvJ1ziv;
+res = base62p.encode(hex); // mR3E2wPbQQL;
 
 
 
@@ -46,7 +48,7 @@ new ObjectId(base58.decodeWithPrefix('charge_2d2yysrPLNBLYpWfK', 'charge_')); //
 
 ```
 
-## `base58` and `base62`
+## `base58`, `base62`, and `base62p`
 
 The module exports both base58 and base62 instances with the following members. 
 
@@ -64,13 +66,38 @@ The module exports both base58 and base62 instances with the following members.
  * `encodeNumericToHex(dec)` – Encode a number to hex string
  * `getHexFromObject(mixed)` Gets the hex string from the given thing. Accepts a hex string, number, BigInt, byte array, or MongoDB `ObjectId` instance.
  * `getUUIDFromHex(hex, lowercase=true)` Gets the formatted UUID string from the given hex string. Defaults to lowercase.
- 
+
+## Base62 vs Base62p
+
+There are two versions of base62 included, base62 and base62p, with the difference being that base62 **does not preserve** 
+leading zero bytes while **base62p does preserve** leading zero bytes by prepending a magic `0x01` byte before encoding.
+
+> **Note: Base62 and Base62p are not interchangeable**. Please use the version that suits your application.
+> In a future version, base62p may become the default pending community feedback.
+
+It's also worth noting that base58 preserves leading zero bytes.
+
+> **For new applications using base62, please consider using base62p.**
+
+```js
+
+const { base58, base62, base62p } = require('base-id');
+
+// example 32 byte uuid with all zeros
+base58.decode(base58.encode('00000000000000000000000000000000'));   // 00000000000000000000000000000000
+base62.decode(base62.encode('00000000000000000000000000000000'));   // 00
+base62p.decode(base62p.encode('00000000000000000000000000000000')); // 00000000000000000000000000000000
+
+```
+
  
 ## Breaking Changes
+
+> In a future major release version, base62 may be replaced with base62p so base62 and base58 by default preserve leading zero bytes.
 
 ### v3.0.0
  * Removed BigNum dependency (uses JS2020's built-in BigInt)
 
 ### v2.0.0
  * Removed `binaryToHex`
- * Removed `hexToBinary` 
+ * Removed `hexToBinary`
